@@ -1,6 +1,6 @@
 # Redux Example: Manual
 
-This example demonstrates how to use Redux with a manual setup. How the project were using it before the Redux Toolkit 
+This example demonstrates how to use Redux with a manual setup. How the project were using it before the Redux Toolkit
 was released. And React Hooks were not available.
 
 ## Getting Started
@@ -8,7 +8,8 @@ was released. And React Hooks were not available.
 Run the following command to install the dependencies:
 
 ```bash
-npm install
+# We have to use --force because the UI library conflicts with React 19
+npm install --force
 ```
 
 Then, start the development server:
@@ -26,7 +27,6 @@ Important files and folders in this project:
 - `src/actions/` - Contains action creators for the Redux store.
 - `src/reducers/` - Contains reducers for the Redux store.
 - `src/store/` - Contains the Redux store configuration.
-
 
 ## Helpful Links
 
