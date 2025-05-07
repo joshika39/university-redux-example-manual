@@ -2,7 +2,7 @@
 
 services:
   tikera:
-    image: joshika39/university-redux-demo-manual
+    image: joshika39/university-redux-example-manual:latest
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.redux-demo-manual.entrypoints=websecure"
