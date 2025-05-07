@@ -19,8 +19,6 @@ export const fetchJokes = (): ThunkAction<
     dispatch({ type: FETCH_JOKES_REQUEST });
 
     try {
-      const resp = await fetch("https://api.sampleapis.com/jokes/goodJokes");
-      const data: Joke[] = await resp.json();
       dispatch({ type: FETCH_JOKES_SUCCESS, payload: data });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
