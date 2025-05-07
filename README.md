@@ -30,5 +30,6 @@ Important files and folders in this project:
 
 ## Helpful Links
 
+- [Sample API List](https://www.sampleapis.com/api-list)
 - [Redux Documentation](https://redux.js.org/)
 - [Redux `connect` Documentation](https://redux.js.org/usage/usage-with-typescript#typing-the-connect-higher-order-component)
