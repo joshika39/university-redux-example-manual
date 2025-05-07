@@ -1,0 +1,16 @@
+# Don't forget to set HOSTNAME in .env file
+
+services:
+  tikera:
+    image: joshika39/university-redux-demo-manual
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.redux-demo-manual.entrypoints=websecure"
+      - "traefik.http.routers.redux-demo-manual.rule=Host(`${HOSTNAME}`)"
+      - "traefik.http.services.redux-demo-manual.loadbalancer.server.port=80"
+    networks:
+      - cloudflaretunnel
+
+networks:
+  cloudflaretunnel:
+    external: true
