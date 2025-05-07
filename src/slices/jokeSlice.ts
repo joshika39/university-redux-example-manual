@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, type PayloadAction} from '@reduxjs/toolkit';
 import {type JokeState} from '@/actions/types';
 import {fetchJokes} from "@/actions";
 
@@ -12,7 +12,7 @@ const jokeSlice = createSlice({
   name: 'jokes',
   initialState,
   reducers: {
-    rateJoke(state, action) {
+    rateJoke(state, action: PayloadAction<{ jokeId: number; rating: number }>) {
       const {jokeId, rating} = action.payload;
       const joke = state.jokes.find((j) => j.id === jokeId);
       if (joke) {

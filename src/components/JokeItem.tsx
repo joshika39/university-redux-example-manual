@@ -1,15 +1,15 @@
-import { connect } from "react-redux";
-import { rateJoke } from "@/actions";
 import { type Joke } from "@/actions/types";
 import {Button} from "@/components/ui/button.tsx";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.tsx";
+import {useAppDispatch} from "@/store";
+import {rateJoke} from "@/slices/jokeSlice.ts";
 
 interface Props {
   joke: Joke;
-  rateJoke: (id: number, rating: number) => void;
 }
 
-function JokeItem({ joke, rateJoke }: Props) {
+function JokeItem({ joke }: Props) {
+  const dispatch = useAppDispatch();
   return (
     <Card>
       <CardHeader>
@@ -31,7 +31,7 @@ function JokeItem({ joke, rateJoke }: Props) {
               <Button
                 key={star}
                 data-state={joke.rating === star ? "active" : "inactive"}
-                onClick={() => rateJoke(joke.id, star)}
+                onClick={() => dispatch(rateJoke({ jokeId: joke.id, rating: star}))}
                 size="icon"
                 className="data-[state=active]:bg-primary/60"
               >
@@ -45,4 +45,4 @@ function JokeItem({ joke, rateJoke }: Props) {
   );
 }
 
-export default connect(null, { rateJoke })(JokeItem);
+export default JokeItem;
