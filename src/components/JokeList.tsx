@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchJokes } from "../actions";
+import { fetchJokes } from "@/actions";
 import JokeItem from "./JokeItem";
-import { type Joke, type FilterType } from "../actions/types";
-import type { RootState } from "../store";
+import { type Joke, type FilterType } from "@/actions/types";
+import type { RootState } from "@/store";
 
 interface Props {
   jokes: Joke[];
@@ -25,11 +25,11 @@ function JokeList({ jokes, loading, error, filter, fetchJokes }: Props) {
   if (error) return <p>Error loading jokes: {error}</p>;
 
   return (
-    <ul>
-      {filteredJokes.map((joke) => (
-        <JokeItem key={joke.id} joke={joke} />
+    <div className="flex flex-col gap-2">
+      {filteredJokes.map((joke, index) => (
+        <JokeItem key={index} joke={joke} />
       ))}
-    </ul>
+    </div>
   );
 }
 

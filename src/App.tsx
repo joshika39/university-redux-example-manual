@@ -3,8 +3,8 @@ import JokeList from "./components/JokeList";
 
 function App() {
   return (
-    <div>
-      <h1>Joke Rating App (Redux + TypeScript)</h1>
+    <div className="p-4">
+      <h1 className="text-3xl font-bold underline text-center">Find your favorite joke</h1>
       <FilterSelect />
       <JokeList />
     </div>
