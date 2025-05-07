@@ -1,7 +1,7 @@
 # Don't forget to set HOSTNAME in .env file
 
 services:
-  tikera:
+  redux-demo-manual:
     image: joshika39/university-redux-example-manual:latest
     labels:
       - "traefik.enable=true"
