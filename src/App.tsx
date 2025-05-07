@@ -1,8 +1,13 @@
+import FilterSelect from "./components/FilterSelect";
+import JokeList from "./components/JokeList";
+
 function App() {
   return (
-    <>
-      <h1 className="text-2xl">Tailwind</h1>
-    </>
+    <div>
+      <h1>Joke Rating App (Redux + TypeScript)</h1>
+      <FilterSelect />
+      <JokeList />
+    </div>
   );
 }
 
