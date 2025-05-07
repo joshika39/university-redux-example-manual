@@ -1,20 +1,21 @@
-import { connect } from "react-redux";
-import { setFilter } from "@/actions";
-import { type FilterType } from "@/actions/types";
-import type { RootState } from "@/store";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
+import {useAppDispatch, useAppSelector} from "@/store";
+import {setFilter} from "@/slices/filterSlice.ts";
+import type {FilterType} from "@/actions/types.ts";
 
-interface Props {
-  filter: FilterType;
-  setFilter: (filter: FilterType) => void;
-}
+function FilterSelect() {
+  const filter = useAppSelector((state) => state.filter);
+  const dispatch = useAppDispatch();
 
-function FilterSelect({ filter, setFilter }: Props) {
+  const handleFilterChange = (value: string) => {
+    dispatch(setFilter(value as FilterType));
+  }
+
   return (
     <div className="mb-4">
       <Select
         value={filter}
-        onValueChange={setFilter}
+        onValueChange={handleFilterChange}
       >
         <SelectTrigger>
           <SelectValue placeholder="Select a filter" />
@@ -30,8 +31,5 @@ function FilterSelect({ filter, setFilter }: Props) {
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  filter: state.filter,
-});
 
-export default connect(mapStateToProps, { setFilter })(FilterSelect);
+export default FilterSelect;

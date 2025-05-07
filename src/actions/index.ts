@@ -1,2 +1,1 @@
-export * from "./jokeActions";
-export * from "./filterActions";
+export * from "./jokeThunks";

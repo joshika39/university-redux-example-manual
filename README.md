@@ -1,4 +1,10 @@
-# Redux Example: Manual
+# Redux Example: Toolkit
+
+> [!TIP]
+> Well done for getting this far! This is a great example of how to use Redux with a Toolkit.
+> First you'll have to:
+> - Install the dependencies
+>   - `npm install @reduxjs/toolkit`
 
 This example demonstrates how to use Redux with a manual setup. How the project were using it before the Redux Toolkit 
 was released. And React Hooks were not available.

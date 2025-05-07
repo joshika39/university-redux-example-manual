@@ -1,20 +1,27 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { thunk } from "redux-thunk";
-import rootReducer from "../reducers";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "@/slices";
+import toastMiddleware from "@/store/toastMiddleware.ts";
+import {useDispatch, useSelector} from "react-redux";
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const setupStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(toastMiddleware.middleware),
+  });
+};
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk)),
-);
+export const store = setupStore();
 
 export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];
 
-export default store;
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();
+
+export interface ThunkApiConfig<E = unknown> {
+  state: RootState;
+  rejectValue: E;
+}
