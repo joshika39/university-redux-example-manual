@@ -1,29 +1,29 @@
-import { connect } from "react-redux";
-import { rateJoke } from "@/actions";
 import { type Joke } from "@/actions/types";
-import {Button} from "@/components/ui/button.tsx";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card.tsx";
 
 interface Props {
   joke: Joke;
-  rateJoke: (id: number, rating: number) => void;
 }
 
-function JokeItem({ joke, rateJoke }: Props) {
+function JokeItem({ joke }: Props) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>
-          {joke.setup}
-        </CardTitle>
+        <CardTitle>{joke.setup}</CardTitle>
         <CardDescription>
           Type: {joke.type} | Rating: {joke.rating || "Not rated"}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p
-          className="mb-4"
-        >{joke.punchline}</p>
+        <p className="mb-4">{joke.punchline}</p>
         <CardFooter className="gap-2 px-0">
           Rate:
           <div className="flex gap-2">
@@ -31,7 +31,6 @@ function JokeItem({ joke, rateJoke }: Props) {
               <Button
                 key={star}
                 data-state={joke.rating === star ? "active" : "inactive"}
-                onClick={() => rateJoke(joke.id, star)}
                 size="icon"
                 className="data-[state=active]:bg-primary/60"
               >
@@ -45,4 +44,4 @@ function JokeItem({ joke, rateJoke }: Props) {
   );
 }
 
-export default connect(null, { rateJoke })(JokeItem);
+export default JokeItem;
