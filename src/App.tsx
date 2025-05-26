@@ -5,6 +5,7 @@ import type { Joke } from "./actions/types";
 
 function App() {
   const [jokes, setJokes] = useState<Joke[]>([]);
+
   useEffect(() => {
     async function fetchData() {
       const resp = await fetch("https://api.sampleapis.com/jokes/goodJokes");
